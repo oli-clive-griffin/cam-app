@@ -7,15 +7,16 @@ function App() {
 
   const webcamRef = useRef(null);
   
-  const capture = useCallback(() => {
+  const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setSrc(imageSrc);
-  }, [webcamRef]);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <WC
+          ref={webcamRef}
           reversed
           videoConstraints={{
             facingMode: { exact: "environment" }
